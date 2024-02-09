@@ -2,6 +2,7 @@ from LinkedList import LinkedList
 
 
 def run_tests():
+    print("\n")
     list1 = LinkedList()
     list1.insert_at_end(3)
     list1.insert_at_end(1)
@@ -37,6 +38,7 @@ def run_tests():
         print(merged_list.data, end=" -> ")
         merged_list = merged_list.next
     print(None)
+    print("\n")
 
 
 if __name__ == "__main__":
