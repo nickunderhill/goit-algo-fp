@@ -68,12 +68,19 @@ def bfs(root):
             queue.append(node.right)
 
 
-def dfs(node, color):
-    if node is not None:
-        node.color = color
-        color = darken_color(color)
-        dfs(node.left, color)
-        dfs(node.right, color)
+def dfs(node):
+    stack = [node]
+    current_color = None
+    while stack:
+        current_node = stack.pop()
+        if current_node is not None:
+            current_color = current_node.color if not current_color else darken_color(
+                current_color)
+            current_node.color = current_color
+            if current_node.right:
+                stack.append((current_node.right))
+            if current_node.left:
+                stack.append((current_node.left))
 
 
 # Створення дерева
@@ -87,7 +94,7 @@ root.right.right = Node(2)  # Додамо ще один вузол для си�
 
 
 # bfs(root)
-dfs(root, root.color)
+dfs(root)
 
 # Visualize the heap
 draw_tree(root)
